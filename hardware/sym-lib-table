@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "mppt_custom")(type "KiCad")(uri "${KIPRJMOD}/mppt_custom.kicad_sym")(options "")(descr "LM5177, CA-IS3062VW, CA-IS3092W, power N-FET with datasheet pad numbers"))
+)

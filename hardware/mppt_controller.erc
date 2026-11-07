@@ -1,0 +1,125 @@
+ERC WARNING: Pin conflict on net INA_ALERT, OPEN-COLLECTOR pin 3/~{Alert} of INA228/U8 <==> BIDIRECTIONAL pin 111/PC10 of STM32H743ZITx/U17 (OPEN-COLLECTOR connected to BIDIRECTIONAL)
+ERC WARNING: Pin conflict on net INA_ALERT, OPEN-COLLECTOR pin 3/~{Alert} of INA228/U9 <==> BIDIRECTIONAL pin 111/PC10 of STM32H743ZITx/U17 (OPEN-COLLECTOR connected to BIDIRECTIONAL)
+ERC WARNING: Pin conflict on net INA_ALERT, OPEN-COLLECTOR pin 3/~{Alert} of INA228/U10 <==> BIDIRECTIONAL pin 111/PC10 of STM32H743ZITx/U17 (OPEN-COLLECTOR connected to BIDIRECTIONAL)
+ERC WARNING: Pin conflict on net INA_ALERT, OPEN-COLLECTOR pin 3/~{Alert} of INA228/U11 <==> BIDIRECTIONAL pin 111/PC10 of STM32H743ZITx/U17 (OPEN-COLLECTOR connected to BIDIRECTIONAL)
+ERC WARNING: Pin conflict on net INA_ALERT, BIDIRECTIONAL pin 111/PC10 of STM32H743ZITx/U17 <==> OPEN-COLLECTOR pin 3/~{Alert} of INA228/U12 (BIDIRECTIONAL connected to OPEN-COLLECTOR)
+ERC WARNING: Insufficient drive current on net VIN_PWR for pin POWER-IN pin 3/VIN of LM5177/U2.
+ERC WARNING: Insufficient drive current on net 3V3 for pin POWER-IN pin 6/VS of INA228/U12.
+ERC WARNING: Insufficient drive current on net 3V3 for pin POWER-IN pin 6/VBAT of STM32H743ZITx/U17.
+ERC WARNING: Insufficient drive current on net 3V3 for pin POWER-IN pin 17/VDD of STM32H743ZITx/U17.
+ERC WARNING: Insufficient drive current on net 3V3 for pin POWER-IN pin 52/VDD of STM32H743ZITx/U17.
+ERC WARNING: Insufficient drive current on net 3V3 for pin POWER-IN pin 39/VDD of STM32H743ZITx/U17.
+ERC WARNING: Insufficient drive current on net 3V3 for pin POWER-IN pin 30/VDD of STM32H743ZITx/U17.
+ERC WARNING: Insufficient drive current on net 3V3 for pin POWER-IN pin 6/VS of INA228/U9.
+ERC WARNING: Insufficient drive current on net 3V3 for pin POWER-IN pin 19/VDD1A of LAN8720A/U19.
+ERC WARNING: Insufficient drive current on net 3V3 for pin POWER-IN pin 6/VS of INA228/U11.
+ERC WARNING: Insufficient drive current on net 3V3 for pin POWER-IN pin 1/VCC of CA-IS3092W/U21.
+ERC WARNING: Insufficient drive current on net 3V3 for pin POWER-IN pin 9/VDDIO of LAN8720A/U19.
+ERC WARNING: Insufficient drive current on net 3V3 for pin POWER-IN pin 1/VDD of MCP4728/U13.
+ERC WARNING: Insufficient drive current on net 3V3 for pin POWER-IN pin 144/VDD of STM32H743ZITx/U17.
+ERC WARNING: Insufficient drive current on net 3V3 for pin POWER-IN pin 1/VDD2A of LAN8720A/U19.
+ERC WARNING: Insufficient drive current on net 3V3 for pin POWER-IN pin 121/VDD of STM32H743ZITx/U17.
+ERC WARNING: Insufficient drive current on net 3V3 for pin POWER-IN pin 6/VS of INA228/U10.
+ERC WARNING: Insufficient drive current on net 3V3 for pin POWER-IN pin 108/VDD of STM32H743ZITx/U17.
+ERC WARNING: Insufficient drive current on net 3V3 for pin POWER-IN pin 62/VDD of STM32H743ZITx/U17.
+ERC WARNING: Insufficient drive current on net 3V3 for pin POWER-IN pin 84/VDD of STM32H743ZITx/U17.
+ERC WARNING: Insufficient drive current on net 3V3 for pin POWER-IN pin 8/VCC of W25Q128JVS/U18.
+ERC WARNING: Insufficient drive current on net 3V3 for pin POWER-IN pin 72/VDD of STM32H743ZITx/U17.
+ERC WARNING: Insufficient drive current on net 3V3 for pin POWER-IN pin 95/VDD33_USB of STM32H743ZITx/U17.
+ERC WARNING: Insufficient drive current on net 3V3 for pin POWER-IN pin 131/VDD of STM32H743ZITx/U17.
+ERC WARNING: Insufficient drive current on net 3V3 for pin POWER-IN pin 6/VS of INA228/U8.
+ERC WARNING: Insufficient drive current on net 3V3 for pin POWER-IN pin 7/VCCL of CA-IS3062VW/U20.
+ERC WARNING: Insufficient drive current on net PHY_VDDCR for pin POWER-IN pin 6/VDDCR of LAN8720A/U19.
+ERC WARNING: Insufficient drive current on net BAT_BUS for pin POWER-IN pin 2/VIN of LM5069MM-1/U4.
+ERC WARNING: Insufficient drive current on net BAT_BUS for pin POWER-IN pin 2/VIN of LM5069MM-1/U5.
+ERC WARNING: Insufficient drive current on net CAN_GND for pin POWER-IN pin 15/GND2 of CA-IS3062VW/U20.
+ERC WARNING: Insufficient drive current on net CAN_GND for pin POWER-IN pin 9/GND2 of CA-IS3062VW/U20.
+ERC WARNING: Insufficient drive current on net CAN_GND for pin POWER-IN pin 10/GND2 of CA-IS3062VW/U20.
+ERC WARNING: No pins attached to net AUX_COMP.
+ERC WARNING: No drivers for net AUX_COMP.
+ERC WARNING: Pin conflict on net INV_PGD, OPEN-COLLECTOR pin 8/PGD of LM5069MM-1/U5 <==> BIDIRECTIONAL pin 116/PD2 of STM32H743ZITx/U17 (OPEN-COLLECTOR connected to BIDIRECTIONAL)
+ERC WARNING: Insufficient drive current on net 5V for pin POWER-IN pin 5/V+ of TLV9061xDBV/U3.
+ERC WARNING: Insufficient drive current on net 5V for pin POWER-IN pin 1/VCC of CA-IS3062VW/U20.
+ERC WARNING: Pin conflict on net LOAD_PGD, OPEN-COLLECTOR pin 8/PGD of LM5069MM-1/U4 <==> BIDIRECTIONAL pin 119/PD5 of STM32H743ZITx/U17 (OPEN-COLLECTOR connected to BIDIRECTIONAL)
+ERC WARNING: Insufficient drive current on net ISO_GND for pin POWER-IN pin 9/GNDB of CA-IS3092W/U21.
+ERC WARNING: Insufficient drive current on net ISO_GND for pin POWER-IN pin 15/GNDB of CA-IS3092W/U21.
+ERC WARNING: Insufficient drive current on net VAUX for pin POWER-IN pin 3/IN of AP63205WU/U15.
+ERC WARNING: Insufficient drive current on net VAUX for pin POWER-IN pin 3/IN of AP63203WU/U16.
+ERC WARNING: Insufficient drive current on net AUX_VIN for pin POWER-IN pin 2/VIN of TPS54360DDA/U14.
+ERC WARNING: Insufficient drive current on net GND for pin POWER-IN pin 10/VSS of MCP4728/U13.
+ERC WARNING: Insufficient drive current on net GND for pin POWER-IN pin 16/VSS of STM32H743ZITx/U17.
+ERC WARNING: Insufficient drive current on net GND for pin POWER-IN pin 5/GND of LM5069MM-1/U5.
+ERC WARNING: Insufficient drive current on net GND for pin POWER-IN pin 31/VSSA of STM32H743ZITx/U17.
+ERC WARNING: Insufficient drive current on net GND for pin POWER-IN pin 30/PGND of LM5177/U2.
+ERC WARNING: Insufficient drive current on net GND for pin POWER-IN pin 7/GND of INA228/U9.
+ERC WARNING: Insufficient drive current on net GND for pin POWER-IN pin 2/GND of LM74700/U1.
+ERC WARNING: Insufficient drive current on net GND for pin POWER-IN pin 4/GND of AP63203WU/U16.
+ERC WARNING: Insufficient drive current on net GND for pin POWER-IN pin 5/GND of LM5069MM-1/U4.
+ERC WARNING: Insufficient drive current on net GND for pin POWER-IN pin 25/VSS of LAN8720A/U19.
+ERC WARNING: Insufficient drive current on net GND for pin POWER-IN pin 17/AGND of LM5177/U2.
+ERC WARNING: Insufficient drive current on net GND for pin POWER-IN pin 39/PAD of LM5177/U2.
+ERC WARNING: Insufficient drive current on net GND for pin POWER-IN pin 7/GND of INA228/U12.
+ERC WARNING: Insufficient drive current on net GND for pin POWER-IN pin 2/GND1 of CA-IS3062VW/U20.
+ERC WARNING: Insufficient drive current on net GND for pin POWER-IN pin 4/GND of AP63205WU/U15.
+ERC WARNING: Insufficient drive current on net GND for pin POWER-IN pin 7/GND of INA228/U11.
+ERC WARNING: Insufficient drive current on net GND for pin POWER-IN pin 7/GND of INA228/U10.
+ERC WARNING: Insufficient drive current on net GND for pin POWER-IN pin 2/V- of TLV9061xDBV/U3.
+ERC WARNING: Insufficient drive current on net GND for pin POWER-IN pin 4/GND of W25Q128JVS/U18.
+ERC WARNING: Insufficient drive current on net GND for pin POWER-IN pin 9/GNDPAD of TPS54360DDA/U14.
+ERC WARNING: Insufficient drive current on net GND for pin POWER-IN pin 7/GND of TPS54360DDA/U14.
+ERC WARNING: Insufficient drive current on net GND for pin POWER-IN pin 7/GND of INA228/U8.
+ERC WARNING: Insufficient drive current on net GND for pin POWER-IN pin 8/GND1 of CA-IS3062VW/U20.
+ERC WARNING: Insufficient drive current on net GND for pin POWER-IN pin 2/GNDA of CA-IS3092W/U21.
+ERC WARNING: Insufficient drive current on net GND for pin POWER-IN pin 8/GNDA of CA-IS3092W/U21.
+ERC WARNING: Insufficient drive current on net PV_F for pin POWER-IN pin 6/ANODE of LM74700/U1.
+ERC WARNING: Insufficient drive current on net 3V3A for pin POWER-IN pin 33/VDDA of STM32H743ZITx/U17.
+ERC WARNING: Unconnected pin: OUTPUT pin 8/HO1_LL of LM5177/U2.
+ERC WARNING: Unconnected pin: OUTPUT pin 9/HO2_LL of LM5177/U2.
+ERC WARNING: Unconnected pin: OUTPUT pin 5/RDY/~{BSY} of MCP4728/U13.
+ERC WARNING: Unconnected pin: BIDIRECTIONAL pin 2/PE3 of STM32H743ZITx/U17.
+ERC WARNING: Unconnected pin: BIDIRECTIONAL pin 3/PE4 of STM32H743ZITx/U17.
+ERC WARNING: Unconnected pin: BIDIRECTIONAL pin 4/PE5 of STM32H743ZITx/U17.
+ERC WARNING: Unconnected pin: BIDIRECTIONAL pin 5/PE6 of STM32H743ZITx/U17.
+ERC WARNING: Unconnected pin: BIDIRECTIONAL pin 7/PC13 of STM32H743ZITx/U17.
+ERC WARNING: Unconnected pin: BIDIRECTIONAL pin 10/PF0 of STM32H743ZITx/U17.
+ERC WARNING: Unconnected pin: BIDIRECTIONAL pin 11/PF1 of STM32H743ZITx/U17.
+ERC WARNING: Unconnected pin: BIDIRECTIONAL pin 12/PF2 of STM32H743ZITx/U17.
+ERC WARNING: Unconnected pin: BIDIRECTIONAL pin 28/PC2_C of STM32H743ZITx/U17.
+ERC WARNING: Unconnected pin: BIDIRECTIONAL pin 29/PC3_C of STM32H743ZITx/U17.
+ERC WARNING: Unconnected pin: BIDIRECTIONAL pin 53/PF13 of STM32H743ZITx/U17.
+ERC WARNING: Unconnected pin: BIDIRECTIONAL pin 56/PG0 of STM32H743ZITx/U17.
+ERC WARNING: Unconnected pin: BIDIRECTIONAL pin 57/PG1 of STM32H743ZITx/U17.
+ERC WARNING: Unconnected pin: BIDIRECTIONAL pin 58/PE7 of STM32H743ZITx/U17.
+ERC WARNING: Unconnected pin: BIDIRECTIONAL pin 59/PE8 of STM32H743ZITx/U17.
+ERC WARNING: Unconnected pin: BIDIRECTIONAL pin 60/PE9 of STM32H743ZITx/U17.
+ERC WARNING: Unconnected pin: BIDIRECTIONAL pin 63/PE10 of STM32H743ZITx/U17.
+ERC WARNING: Unconnected pin: BIDIRECTIONAL pin 87/PG2 of STM32H743ZITx/U17.
+ERC WARNING: Unconnected pin: BIDIRECTIONAL pin 88/PG3 of STM32H743ZITx/U17.
+ERC WARNING: Unconnected pin: BIDIRECTIONAL pin 89/PG4 of STM32H743ZITx/U17.
+ERC WARNING: Unconnected pin: BIDIRECTIONAL pin 90/PG5 of STM32H743ZITx/U17.
+ERC WARNING: Unconnected pin: BIDIRECTIONAL pin 92/PG7 of STM32H743ZITx/U17.
+ERC WARNING: Unconnected pin: BIDIRECTIONAL pin 110/PA15 of STM32H743ZITx/U17.
+ERC WARNING: Unconnected pin: BIDIRECTIONAL pin 125/PG10 of STM32H743ZITx/U17.
+ERC WARNING: Unconnected pin: BIDIRECTIONAL pin 132/PG15 of STM32H743ZITx/U17.
+ERC WARNING: Unconnected pin: BIDIRECTIONAL pin 133/PB3 of STM32H743ZITx/U17.
+ERC WARNING: Unconnected pin: BIDIRECTIONAL pin 134/PB4 of STM32H743ZITx/U17.
+ERC WARNING: Unconnected pin: PASSIVE pin 6/Pin_6 of Conn_02x05_Odd_Even/J7.
+ERC WARNING: Unconnected pin: PASSIVE pin 7/Pin_7 of Conn_02x05_Odd_Even/J7.
+ERC WARNING: Unconnected pin: PASSIVE pin 8/Pin_8 of Conn_02x05_Odd_Even/J7.
+ERC WARNING: Unconnected pin: BIDIRECTIONAL pin 3/LED1/REGOFF of LAN8720A/U19.
+ERC WARNING: Unconnected pin: POWER-IN pin 8/ of RJ45_Hanrun_HR911105A_Horizontal/J8.
+ERC WARNING: Unconnected pin: PASSIVE pin 9/ of RJ45_Hanrun_HR911105A_Horizontal/J8.
+ERC WARNING: Unconnected pin: PASSIVE pin 10/ of RJ45_Hanrun_HR911105A_Horizontal/J8.
+ERC WARNING: Unconnected pin: PASSIVE pin 11/ of RJ45_Hanrun_HR911105A_Horizontal/J8.
+ERC WARNING: Unconnected pin: PASSIVE pin 12/ of RJ45_Hanrun_HR911105A_Horizontal/J8.
+ERC WARNING: Unconnected pin: INPUT pin 10/SEL of CA-IS3092W/U21.
+ERC WARNING: Unconnected pin: BIDIRECTIONAL pin A8/SBU1 of USB_C_Receptacle_USB2.0_16P/J11.
+ERC WARNING: Unconnected pin: BIDIRECTIONAL pin B8/SBU2 of USB_C_Receptacle_USB2.0_16P/J11.
+ERC WARNING: Unconnected pin: PASSIVE pin 35/Pin_35 of Conn_01x40/J13.
+ERC WARNING: Unconnected pin: PASSIVE pin 36/Pin_36 of Conn_01x40/J13.
+ERC WARNING: Unconnected pin: PASSIVE pin 37/Pin_37 of Conn_01x40/J13.
+ERC WARNING: Unconnected pin: PASSIVE pin 38/Pin_38 of Conn_01x40/J13.
+ERC WARNING: Unconnected pin: PASSIVE pin 39/Pin_39 of Conn_01x40/J13.
+ERC INFO: 122 warnings found while running ERC.
+ERC INFO: 0 errors found while running ERC.
+

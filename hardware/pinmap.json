@@ -1,0 +1,407 @@
+{
+ "QSPI_CLK": {
+  "pin": "PF10",
+  "lqfp": "22",
+  "signal": "QUADSPI_CLK"
+ },
+ "QSPI_NCS": {
+  "pin": "PG6",
+  "lqfp": "91",
+  "signal": "QUADSPI_BK1_NCS"
+ },
+ "QSPI_IO0": {
+  "pin": "PF8",
+  "lqfp": "20",
+  "signal": "QUADSPI_BK1_IO0"
+ },
+ "QSPI_IO1": {
+  "pin": "PF9",
+  "lqfp": "21",
+  "signal": "QUADSPI_BK1_IO1"
+ },
+ "QSPI_IO2": {
+  "pin": "PE2",
+  "lqfp": "1",
+  "signal": "QUADSPI_BK1_IO2"
+ },
+ "QSPI_IO3": {
+  "pin": "PF6",
+  "lqfp": "18",
+  "signal": "QUADSPI_BK1_IO3"
+ },
+ "ETH_REF_CLK": {
+  "pin": "PA1",
+  "lqfp": "35",
+  "signal": "ETH_REF_CLK"
+ },
+ "ETH_MDIO": {
+  "pin": "PA2",
+  "lqfp": "36",
+  "signal": "ETH_MDIO"
+ },
+ "ETH_MDC": {
+  "pin": "PC1",
+  "lqfp": "27",
+  "signal": "ETH_MDC"
+ },
+ "ETH_CRS_DV": {
+  "pin": "PA7",
+  "lqfp": "43",
+  "signal": "ETH_CRS_DV"
+ },
+ "ETH_RXD0": {
+  "pin": "PC4",
+  "lqfp": "44",
+  "signal": "ETH_RXD0"
+ },
+ "ETH_RXD1": {
+  "pin": "PC5",
+  "lqfp": "45",
+  "signal": "ETH_RXD1"
+ },
+ "ETH_TX_EN": {
+  "pin": "PG11",
+  "lqfp": "126",
+  "signal": "ETH_TX_EN"
+ },
+ "ETH_TXD0": {
+  "pin": "PG13",
+  "lqfp": "128",
+  "signal": "ETH_TXD0"
+ },
+ "ETH_TXD1": {
+  "pin": "PG12",
+  "lqfp": "127",
+  "signal": "ETH_TXD1"
+ },
+ "USB_DM": {
+  "pin": "PA11",
+  "lqfp": "103",
+  "signal": "USB_OTG_FS_DM"
+ },
+ "USB_DP": {
+  "pin": "PA12",
+  "lqfp": "104",
+  "signal": "USB_OTG_FS_DP"
+ },
+ "LCD_R3": {
+  "pin": "PB0",
+  "lqfp": "46",
+  "signal": "LTDC_R3"
+ },
+ "LCD_R4": {
+  "pin": "PA5",
+  "lqfp": "41",
+  "signal": "LTDC_R4"
+ },
+ "LCD_R5": {
+  "pin": "PC0",
+  "lqfp": "26",
+  "signal": "LTDC_R5"
+ },
+ "LCD_R6": {
+  "pin": "PB1",
+  "lqfp": "47",
+  "signal": "LTDC_R6"
+ },
+ "LCD_R7": {
+  "pin": "PE15",
+  "lqfp": "68",
+  "signal": "LTDC_R7"
+ },
+ "LCD_G2": {
+  "pin": "PA6",
+  "lqfp": "42",
+  "signal": "LTDC_G2"
+ },
+ "LCD_G3": {
+  "pin": "PE11",
+  "lqfp": "64",
+  "signal": "LTDC_G3"
+ },
+ "LCD_G4": {
+  "pin": "PB10",
+  "lqfp": "69",
+  "signal": "LTDC_G4"
+ },
+ "LCD_G5": {
+  "pin": "PB11",
+  "lqfp": "70",
+  "signal": "LTDC_G5"
+ },
+ "LCD_G6": {
+  "pin": "PC7",
+  "lqfp": "97",
+  "signal": "LTDC_G6"
+ },
+ "LCD_G7": {
+  "pin": "PD3",
+  "lqfp": "117",
+  "signal": "LTDC_G7"
+ },
+ "LCD_B3": {
+  "pin": "PD10",
+  "lqfp": "79",
+  "signal": "LTDC_B3"
+ },
+ "LCD_B4": {
+  "pin": "PE12",
+  "lqfp": "65",
+  "signal": "LTDC_B4"
+ },
+ "LCD_B5": {
+  "pin": "PA3",
+  "lqfp": "37",
+  "signal": "LTDC_B5"
+ },
+ "LCD_B6": {
+  "pin": "PB8",
+  "lqfp": "139",
+  "signal": "LTDC_B6"
+ },
+ "LCD_B7": {
+  "pin": "PB9",
+  "lqfp": "140",
+  "signal": "LTDC_B7"
+ },
+ "LCD_CLK": {
+  "pin": "PE14",
+  "lqfp": "67",
+  "signal": "LTDC_CLK"
+ },
+ "LCD_HSYNC": {
+  "pin": "PC6",
+  "lqfp": "96",
+  "signal": "LTDC_HSYNC"
+ },
+ "LCD_VSYNC": {
+  "pin": "PA4",
+  "lqfp": "40",
+  "signal": "LTDC_VSYNC"
+ },
+ "LCD_DE": {
+  "pin": "PE13",
+  "lqfp": "66",
+  "signal": "LTDC_DE"
+ },
+ "CAN_TX": {
+  "pin": "PD1",
+  "lqfp": "115",
+  "signal": "FDCAN1_TX"
+ },
+ "CAN_RX": {
+  "pin": "PD0",
+  "lqfp": "114",
+  "signal": "FDCAN1_RX"
+ },
+ "RS485_TX": {
+  "pin": "PG14",
+  "lqfp": "129",
+  "signal": "USART6_TX"
+ },
+ "RS485_RX": {
+  "pin": "PG9",
+  "lqfp": "124",
+  "signal": "USART6_RX"
+ },
+ "RS485_DE": {
+  "pin": "PG8",
+  "lqfp": "93",
+  "signal": "USART6_DE"
+ },
+ "CON_TX": {
+  "pin": "PD8",
+  "lqfp": "77",
+  "signal": "USART3_TX"
+ },
+ "CON_RX": {
+  "pin": "PD9",
+  "lqfp": "78",
+  "signal": "USART3_RX"
+ },
+ "I2C_SCL": {
+  "pin": "PB6",
+  "lqfp": "136",
+  "signal": "I2C1_SCL"
+ },
+ "I2C_SDA": {
+  "pin": "PB7",
+  "lqfp": "137",
+  "signal": "I2C1_SDA"
+ },
+ "TOUCH_SCL": {
+  "pin": "PF14",
+  "lqfp": "54",
+  "signal": "I2C4_SCL"
+ },
+ "TOUCH_SDA": {
+  "pin": "PF15",
+  "lqfp": "55",
+  "signal": "I2C4_SDA"
+ },
+ "SPI_SCK": {
+  "pin": "PB13",
+  "lqfp": "74",
+  "signal": "SPI2_SCK"
+ },
+ "SPI_MOSI": {
+  "pin": "PB15",
+  "lqfp": "76",
+  "signal": "SPI2_MOSI"
+ },
+ "SPI_MISO": {
+  "pin": "PB14",
+  "lqfp": "75",
+  "signal": "SPI2_MISO"
+ },
+ "LCD_BL_PWM": {
+  "pin": "PD15",
+  "lqfp": "86",
+  "signal": "TIM4_CH4"
+ },
+ "ADC_VPV": {
+  "pin": "PF11",
+  "lqfp": "49",
+  "signal": "ADC1_INP2"
+ },
+ "ADC_VBAT": {
+  "pin": "PF4",
+  "lqfp": "14",
+  "signal": "ADC3_INP9"
+ },
+ "ADC_VLOAD": {
+  "pin": "PF5",
+  "lqfp": "15",
+  "signal": "ADC3_INP4"
+ },
+ "ADC_NTC_PWR": {
+  "pin": "PF12",
+  "lqfp": "50",
+  "signal": "ADC1_INP6"
+ },
+ "ADC_NTC_BAT": {
+  "pin": "PF3",
+  "lqfp": "13",
+  "signal": "ADC3_INP5"
+ },
+ "ADC_NTC_AUX": {
+  "pin": "PF7",
+  "lqfp": "19",
+  "signal": "ADC3_INP3"
+ },
+ "USB_VBUS": {
+  "pin": "PE1",
+  "lqfp": "142",
+  "signal": "GPIO"
+ },
+ "LED1": {
+  "pin": "PE0",
+  "lqfp": "141",
+  "signal": "GPIO"
+ },
+ "LED2": {
+  "pin": "PD14",
+  "lqfp": "85",
+  "signal": "GPIO"
+ },
+ "LED3": {
+  "pin": "PD13",
+  "lqfp": "82",
+  "signal": "GPIO"
+ },
+ "LED4": {
+  "pin": "PD12",
+  "lqfp": "81",
+  "signal": "GPIO"
+ },
+ "MPPT_EN": {
+  "pin": "PD11",
+  "lqfp": "80",
+  "signal": "GPIO"
+ },
+ "MPPT_FLT": {
+  "pin": "PD7",
+  "lqfp": "123",
+  "signal": "GPIO"
+ },
+ "LOAD_EN": {
+  "pin": "PD6",
+  "lqfp": "122",
+  "signal": "GPIO"
+ },
+ "LOAD_PGD": {
+  "pin": "PD5",
+  "lqfp": "119",
+  "signal": "GPIO"
+ },
+ "INV_EN": {
+  "pin": "PD4",
+  "lqfp": "118",
+  "signal": "GPIO"
+ },
+ "INV_PGD": {
+  "pin": "PD2",
+  "lqfp": "116",
+  "signal": "GPIO"
+ },
+ "INV_REMOTE": {
+  "pin": "PC12",
+  "lqfp": "113",
+  "signal": "GPIO"
+ },
+ "INV_FAULT": {
+  "pin": "PC11",
+  "lqfp": "112",
+  "signal": "GPIO"
+ },
+ "INA_ALERT": {
+  "pin": "PC10",
+  "lqfp": "111",
+  "signal": "GPIO"
+ },
+ "ETH_NRST": {
+  "pin": "PC9",
+  "lqfp": "99",
+  "signal": "GPIO"
+ },
+ "LCD_RST": {
+  "pin": "PC8",
+  "lqfp": "98",
+  "signal": "GPIO"
+ },
+ "TOUCH_INT": {
+  "pin": "PB12",
+  "lqfp": "73",
+  "signal": "GPIO"
+ },
+ "TOUCH_RST": {
+  "pin": "PB5",
+  "lqfp": "135",
+  "signal": "GPIO"
+ },
+ "SPI_CS": {
+  "pin": "PB2",
+  "lqfp": "48",
+  "signal": "GPIO"
+ },
+ "SPI_DC": {
+  "pin": "PA10",
+  "lqfp": "102",
+  "signal": "GPIO"
+ },
+ "SPI_RST": {
+  "pin": "PA9",
+  "lqfp": "101",
+  "signal": "GPIO"
+ },
+ "FAN_PWM": {
+  "pin": "PA8",
+  "lqfp": "100",
+  "signal": "GPIO"
+ },
+ "RS485_NRE": {
+  "pin": "PA0",
+  "lqfp": "34",
+  "signal": "GPIO"
+ }
+}

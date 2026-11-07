@@ -1,5 +1,10 @@
 __pycache__/
 .venv/
 *.lck
-_*.log
 *.bak
+skidl*.log
+skidl*.erc
+_kicad.xml
+*.log
+fp-info-cache
+_ds/*.txt
