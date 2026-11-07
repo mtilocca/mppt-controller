@@ -32,10 +32,9 @@ json.dump(p, open(PRO, "w"), indent=2)
 
 # ------------------------------------------------------------ board
 b = pcbnew.LoadBoard(PCB)
-for z in list(b.Zones()):
-    b.Remove(z)
-bb = b.GetBoardEdgesBoundingBox()
+bb = b.GetBoardEdgesBoundingBox()           # before removing zones (SWIG wrapper quirk)
 x1, y1, x2, y2 = (pcbnew.ToMM(v) for v in (bb.GetLeft(), bb.GetTop(), bb.GetRight(), bb.GetBottom()))
+assert not list(b.Zones()), 'run on a fresh import: make_pcb.py + place_pcb.py first'
 IN = 0.4
 
 
@@ -47,7 +46,7 @@ def rect_outline(z, a, b_, c, d):
 
 
 gnd = b.FindNet("GND")
-for layer in (pcbnew.In1_Cu, pcbnew.In2_Cu):
+for layer in (pcbnew.In1_Cu,):          # In2.Cu is a routing layer
     z = pcbnew.ZONE(b)
     z.SetLayer(layer)
     z.SetNet(gnd)
@@ -91,8 +90,8 @@ def keepout(name, nets, pad_refs, layers):
     print(f"keep-out {name}: x {min(xs) - m:.1f}..{max(xs) + m:.1f} y {min(ys) - m:.1f}..{max(ys) + m:.1f}")
 
 
-keepout("ISO_CAN", {"CAN_GND", "CAN_VISO", "CANH", "CANL", "CAN_TERM_MID"}, {"U20": {str(i) for i in range(9, 17)}}, [pcbnew.In1_Cu, pcbnew.In2_Cu])
-keepout("ISO_485", {"ISO_GND", "ISO_3V3", "RS485_A", "RS485_B", "RS485_TERM_MID"}, {"U21": {str(i) for i in range(9, 17)}}, [pcbnew.In1_Cu, pcbnew.In2_Cu])
+keepout("ISO_CAN", {"CAN_GND", "CAN_VISO", "CANH", "CANL", "CAN_TERM_MID"}, {"U20": {str(i) for i in range(9, 17)}}, [pcbnew.In1_Cu])
+keepout("ISO_485", {"ISO_GND", "ISO_3V3", "RS485_A", "RS485_B", "RS485_TERM_MID"}, {"U21": {str(i) for i in range(9, 17)}}, [pcbnew.In1_Cu])
 
 # board setup defaults for JLCPCB 4-layer
 bds = b.GetDesignSettings()
@@ -102,4 +101,4 @@ bds.m_MinThroughDrill = mm(0.3)
 bds.m_CopperEdgeClearance = mm(0.4)
 pcbnew.ZONE_FILLER(b).Fill(b.Zones())
 pcbnew.SaveBoard(PCB, b)
-print("planes: In1/In2 GND; zones:", len(list(b.Zones())))
+print("plane: In1 GND (In2 routes); zones:", len(list(b.Zones())))
