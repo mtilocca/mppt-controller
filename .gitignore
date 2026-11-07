@@ -8,3 +8,7 @@ _kicad.xml
 *.log
 fp-info-cache
 _ds/*.txt
+_place.*
+_view.*
+_drc.txt
+_parts.tsv
