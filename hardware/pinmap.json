@@ -229,16 +229,6 @@
   "lqfp": "137",
   "signal": "I2C1_SDA"
  },
- "TOUCH_SCL": {
-  "pin": "PF14",
-  "lqfp": "54",
-  "signal": "I2C4_SCL"
- },
- "TOUCH_SDA": {
-  "pin": "PF15",
-  "lqfp": "55",
-  "signal": "I2C4_SDA"
- },
  "SPI_SCK": {
   "pin": "PB13",
   "lqfp": "74",
@@ -374,7 +364,7 @@
   "lqfp": "73",
   "signal": "GPIO"
  },
- "TOUCH_RST": {
+ "TOUCH_CS": {
   "pin": "PB5",
   "lqfp": "135",
   "signal": "GPIO"

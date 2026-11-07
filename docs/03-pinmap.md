@@ -96,15 +96,6 @@ Active-low control nets (reset/boot state = pin high-Z with a pull-up = everythi
 | I2C_SCL | PB6 | 136 | I2C1_SCL |
 | I2C_SDA | PB7 | 137 | I2C1_SDA |
 
-## TOUCH
-
-| Signal | Pin | LQFP-144 | Function |
-|---|---|---|---|
-| TOUCH_SCL | PF14 | 54 | I2C4_SCL |
-| TOUCH_SDA | PF15 | 55 | I2C4_SDA |
-| TOUCH_INT | PB12 | 73 | GPIO |
-| TOUCH_RST | PB5 | 135 | GPIO |
-
 ## SPI
 
 | Signal | Pin | LQFP-144 | Function |
@@ -145,3 +136,10 @@ Active-low control nets (reset/boot state = pin high-Z with a pull-up = everythi
 | INV_FAULT | PC11 | 112 | GPIO |
 | INA_ALERT | PC10 | 111 | GPIO |
 | FAN_PWM | PA8 | 100 | GPIO |
+
+## TOUCH
+
+| Signal | Pin | LQFP-144 | Function |
+|---|---|---|---|
+| TOUCH_INT | PB12 | 73 | GPIO |
+| TOUCH_CS | PB5 | 135 | GPIO |

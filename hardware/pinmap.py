@@ -37,7 +37,6 @@ add("CAN_TX", "FDCAN1_TX"); add("CAN_RX", "FDCAN1_RX")
 add("RS485_TX", "USART6_TX"); add("RS485_RX", "USART6_RX"); add("RS485_DE", "USART6_DE")
 add("CON_TX", "USART3_TX"); add("CON_RX", "USART3_RX")
 add("I2C_SCL", "I2C1_SCL"); add("I2C_SDA", "I2C1_SDA")          # INA228 x4 + temp
-add("TOUCH_SCL", "I2C4_SCL"); add("TOUCH_SDA", "I2C4_SDA")
 add("SPI_SCK", "SPI2_SCK"); add("SPI_MOSI", "SPI2_MOSI"); add("SPI_MISO", "SPI2_MISO")
 add("LCD_BL_PWM", "TIM3_CH1", "TIM3_CH2", "TIM3_CH3", "TIM3_CH4", "TIM4_CH1", "TIM4_CH2", "TIM4_CH3", "TIM4_CH4")
 # analog
@@ -47,7 +46,7 @@ for n in ("VPV", "VBAT", "VLOAD", "NTC_PWR", "NTC_BAT", "NTC_AUX"):
 # plain GPIO (any pin)
 GPIO = ["USB_VBUS", "LED1", "LED2", "LED3", "LED4",
         "MPPT_EN", "MPPT_FLT", "LOAD_EN", "LOAD_PGD", "INV_EN", "INV_PGD", "INV_REMOTE", "INV_FAULT",
-        "INA_ALERT", "ETH_NRST", "LCD_RST", "TOUCH_INT", "TOUCH_RST", "SPI_CS", "SPI_DC", "SPI_RST",
+        "INA_ALERT", "ETH_NRST", "LCD_RST", "TOUCH_INT", "TOUCH_CS", "SPI_CS", "SPI_DC", "SPI_RST",
         "FAN_PWM", "RS485_NRE"]
 for g in GPIO: add(g, "GPIO")
 

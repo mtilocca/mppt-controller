@@ -534,12 +534,17 @@ AUX_SW += d_aux["K"]
 GND += d_aux["A"]
 l_aux = Part("Device", "L", value="33u 3A Isat", footprint=fp("Inductor_SMD:L_Bourns_SRP1245A"))
 AUX_SW += l_aux[1]
-VAUX += l_aux[2]
-cap_between(VAUX, GND, "22u 25V", C1210, n=3)
-res_between(VAUX, AUX_FB, "105k")                           # 0.8 V x (1 + 105k/10.2k) = 9.0 V
+VAUX_RAW = N("VAUX_RAW")                                    # TPS54360 output, before the OR-ing diodes
+VAUX_RAW += l_aux[2]
+cap_between(VAUX_RAW, GND, "22u 25V", C1210, n=3)
+res_between(VAUX_RAW, AUX_FB, "110k")                       # 0.8 V x (1 + 110k/10.2k) = 9.45 V, about 9.1 V after the diode
+d_or_bat = Part("Device", "D_Schottky", value="SS14", footprint=fp(SMA))
+VAUX_RAW += d_or_bat["A"]
+VAUX += d_or_bat["K"]                                       # blocks back-feed into the TPS54360 / battery bus in USB-only mode
+cap_between(VAUX, GND, "10u 25V", C1206, n=2)
 res_between(AUX_FB, GND, "10.2k")
 AUX_FB += u_aux["FB"]
-cap_between(AUX_FB, VAUX, "39p")
+cap_between(AUX_FB, VAUX_RAW, "39p")
 mid = N("AUX_COMP_RC")
 res_between(u_aux["COMP"], mid, "13k")
 cap_between(mid, GND, "6800p")
@@ -588,9 +593,15 @@ def mp(label):
     return mcu[PM[label]["lqfp"]]
 
 
+_SIG_DONE = set()
+
+
 def sig(label):
+    """Net named after an STM32 signal, with its pin attached (once)."""
     n = N(label)
-    n += mp(label)
+    if label not in _SIG_DONE:
+        _SIG_DONE.add(label)
+        n += mp(label)
     return n
 
 
@@ -811,6 +822,15 @@ VBUS_USB += u_esd[5]
 cap_between(VBUS_USB, GND, "10u", C1206)
 USB_DP += mcu[PM["USB_DP"]["lqfp"]]
 USB_DN += mcu[PM["USB_DM"]["lqfp"]]
+# USB power path: 500 mA PTC, Schottky into VAUX (about 4.6 V); the 3V3 buck still runs, the 5 V rail sags (CAN supply may not start)
+USB_PF = N("VBUS_PROT")
+f_usb = Part("Device", "Polyfuse", value="PTC 0.5A 6V", footprint=fp("Fuse:Fuse_1206_3216Metric"))
+VBUS_USB += f_usb[1]
+USB_PF += f_usb[2]
+d_usb = Part("Device", "D_Schottky", value="SS14", footprint=fp(SMA))
+USB_PF += d_usb["A"]
+VAUX += d_usb["K"]
+tp(USB_PF, "TP_USB_PWR")
 # VBUS detect (divider to a GPIO)
 vb = sig("USB_VBUS")
 res_between(VBUS_USB, vb, "10k")
@@ -822,49 +842,78 @@ header([GND, sig("CON_TX"), sig("CON_RX"), V3], "J_UART (GND, TX, RX, 3V3)")
 # 14. Display: 40-pin FPC (RGB565 / LTDC, backlight, touch I2C) + SPI header
 # --------------------------------------------------------------------------------------
 section("display")
-j_lcd = Part("Connector_Generic", "Conn_01x40", value="J_LCD 40-pin 0.5 mm FPC (RGB565)",
+# 4.3" 480x272 RGB TFT with resistive touch, 40-pin 0.5 mm FPC, "AT043TN24-style" pinout (VERIFY against the chosen panel datasheet):
+# 1 LEDK, 2 LEDA, 3 GND, 4 VDD, 5-12 R0-R7, 13-20 G0-G7, 21-28 B0-B7, 29 GND, 30 DCLK, 31 DISP, 32 HSYNC, 33 VSYNC, 34 DE,
+# 35 NC, 36 GND, 37 XR, 38 YD, 39 XL, 40 YU. LTDC drives RGB565 on the upper bits; the lower bits are tied to GND.
+j_lcd = Part("Connector_Generic", "Conn_01x40", value="J_LCD 40-pin 0.5 mm FPC (4.3in RGB)",
              footprint=fp("Connector_FFC-FPC:Hirose_FH12-40S-0.5SH_1x40-1MP_P0.50mm_Horizontal"))
-lcd_pins = {}
-LCD_ORDER = ["LCD_B3", "LCD_B4", "LCD_B5", "LCD_B6", "LCD_B7",
-             "LCD_G2", "LCD_G3", "LCD_G4", "LCD_G5", "LCD_G6", "LCD_G7",
-             "LCD_R3", "LCD_R4", "LCD_R5", "LCD_R6", "LCD_R7",
-             "LCD_CLK", "LCD_HSYNC", "LCD_VSYNC", "LCD_DE", "LCD_RST"]
-# Generic 40-pin RGB TFT order is panel specific; this is a starting assignment (see docs/03-pinmap.md): pins 1-2 backlight,
-# 3 GND, 4-5 VCC, 6-26 signals, 27 GND, 28-35 touch/spare, 36-40 spare/GND
-pin = 1
-BL_A = N("LCD_BL_A")
-BL_K = N("LCD_BL_K")
-j_lcd[1] += BL_A
-j_lcd[2] += BL_K
+BL_A, BL_K = N("LCD_BL_A"), N("LCD_BL_K")
+j_lcd[1] += BL_K
+j_lcd[2] += BL_A
 j_lcd[3] += GND
 j_lcd[4] += V3
-j_lcd[5] += V3
-pin = 6
-for lab in LCD_ORDER:
-    n = sig(lab)
-    j_lcd[pin] += n
-    pin += 1
-j_lcd[27] += GND
-TOUCH_SCL, TOUCH_SDA, TOUCH_INT, TOUCH_RST = sig("TOUCH_SCL"), sig("TOUCH_SDA"), sig("TOUCH_INT"), sig("TOUCH_RST")
-j_lcd[28] += TOUCH_SCL
-j_lcd[29] += TOUCH_SDA
-j_lcd[30] += TOUCH_INT
-j_lcd[31] += TOUCH_RST
-j_lcd[32] += V5
-j_lcd[33] += GND
-j_lcd[34] += GND
-j_lcd[40] += GND
-res_between(TOUCH_SCL, V3, "4.7k")
-res_between(TOUCH_SDA, V3, "4.7k")
-res_between(TOUCH_INT, V3, "10k")
-# backlight: low-side N-FET PWM on cathode, 5 V on the anode (the panel LED driver/series resistor is panel specific)
+for pin_, lab in zip(range(5, 13), [None, None, None, "LCD_R3", "LCD_R4", "LCD_R5", "LCD_R6", "LCD_R7"]):
+    j_lcd[pin_] += (sig(lab) if lab else GND)
+for pin_, lab in zip(range(13, 21), [None, None, "LCD_G2", "LCD_G3", "LCD_G4", "LCD_G5", "LCD_G6", "LCD_G7"]):
+    j_lcd[pin_] += (sig(lab) if lab else GND)
+for pin_, lab in zip(range(21, 29), [None, None, None, "LCD_B3", "LCD_B4", "LCD_B5", "LCD_B6", "LCD_B7"]):
+    j_lcd[pin_] += (sig(lab) if lab else GND)
+j_lcd[29] += GND
+j_lcd[30] += sig("LCD_CLK")
+lcd_disp = sig("LCD_RST")                         # panel DISP (high = display on)
+j_lcd[31] += lcd_disp
+res_between(lcd_disp, GND, "100k")
+j_lcd[32] += sig("LCD_HSYNC")
+j_lcd[33] += sig("LCD_VSYNC")
+j_lcd[34] += sig("LCD_DE")
+j_lcd[36] += GND
+TP_XR, TP_YD, TP_XL, TP_YU = N("TOUCH_XR"), N("TOUCH_YD"), N("TOUCH_XL"), N("TOUCH_YU")
+j_lcd[37] += TP_XR
+j_lcd[38] += TP_YD
+j_lcd[39] += TP_XL
+j_lcd[40] += TP_YU
+# resistive touch controller on the shared SPI2 bus
+u_ts = Part("Driver_Display", "XPT2046TS", value="XPT2046", footprint=fp("Package_SO:TSSOP-16_4.4x5mm_P0.65mm"))
+V3 += u_ts["VCC"], u_ts["IOVDD"], u_ts["VBAT"]
+GND += u_ts["GND"], u_ts["IN"]
+cap_between(V3, GND, "100n", n=2)
+cap_between(u_ts["VREF"], GND, "100n")
+TP_XR += u_ts["XP"]
+TP_YU += u_ts["YP"]
+TP_XL += u_ts["XN"]
+TP_YD += u_ts["YN"]
+sck, mosi, miso = sig("SPI_SCK"), sig("SPI_MOSI"), sig("SPI_MISO")
+sck += u_ts["DCLK"]
+mosi += u_ts["DIN"]
+miso += u_ts["DOUT"]
+tcs = sig("TOUCH_CS")
+tcs += u_ts["~{CS}"]
+res_between(tcs, V3, "10k")
+tint = sig("TOUCH_INT")
+tint += u_ts["~{PENIRQ}"]
+res_between(tint, V3, "10k")
+# backlight: MT3608 boost from 5 V, LED current set by a sense resistor on FB (0.6 V / 30 ohm = 20 mA; VERIFY panel LED current/voltage)
+u_bl = Part("Regulator_Switching", "MT3608", value="MT3608", footprint=fp("Package_TO_SOT_SMD:SOT-23-6"))
+BL_SW = N("BL_SW")
+V5 += u_bl["IN"]
+GND += u_bl["GND"]
+BL_SW += u_bl["SW"]
+cap_between(V5, GND, "10u 25V", C1206)
+l_bl = Part("Device", "L", value="22u 1.5A", footprint=fp("Inductor_SMD:L_Bourns_SRP5030T"))
+V5 += l_bl[1]
+BL_SW += l_bl[2]
+d_bl = Part("Device", "D_Schottky", value="SS14", footprint=fp(SMA))
+BL_SW += d_bl["A"]
+BL_A += d_bl["K"]
+cap_between(BL_A, GND, "10u 50V", C1206)
+z_bl = Part("Device", "D_Zener", value="BZT52C27 27V (OVP)", footprint=fp(SOD123))
+BL_A += z_bl["K"]
+GND += z_bl["A"]
+BL_K += u_bl["FB"]
+res_between(BL_K, GND, "30 1%")
 BL_PWM = sig("LCD_BL_PWM")
-q_bl = Part("Transistor_FET", "2N7002", value="2N7002", footprint=fp(SOT23))
-BL_K += q_bl["D"]
-GND += q_bl["S"]
-BL_PWM += q_bl["G"]
+BL_PWM += u_bl["EN"]
 res_between(BL_PWM, GND, "100k")
-res_between(V5, BL_A, "0")
 # SPI header for a small OLED/TFT: GND, 3V3, SCK, MOSI, MISO, CS, DC, RST
 header([GND, V3, sig("SPI_SCK"), sig("SPI_MOSI"), sig("SPI_MISO"), sig("SPI_CS"), sig("SPI_DC"), sig("SPI_RST")],
        "J_SPI_LCD (GND, 3V3, SCK, MOSI, MISO, CS, DC, RST)")
