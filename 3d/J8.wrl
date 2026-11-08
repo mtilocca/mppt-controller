@@ -2,3 +2,6 @@
 Transform { translation 4.440000000000001 -4.359999999999999 6.55 children Shape {
  appearance Appearance { material Material { diffuseColor 0.75 0.75 0.78 } }
  geometry Box { size 23.990000000000002 21.3 13.1 } } }
+Transform { translation 4.440000000000001 -15.01 5.5 children Shape {
+ appearance Appearance { material Material { diffuseColor 0.05 0.05 0.05 } }
+ geometry Box { size 11.5 1.6 7.0 } } }
