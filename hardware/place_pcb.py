@@ -125,6 +125,8 @@ def place_edge(ref, edge, along, inset=0.0):
     fp = fps[ref]
     normal = {"left": (-1, 0), "right": (1, 0), "top": (0, -1), "bottom": (0, 1)}[edge]
     orient_to(fp, normal)
+    if "MKDS" in fp.GetFPIDAsString():     # centroid heuristic is ambiguous here; the 3D model's wire entry is on the opposite side
+        fp.SetOrientationDegrees((fp.GetOrientationDegrees() + 180) % 360)
     x1, y1, x2, y2 = court(fp)
     w, h = x2 - x1, y2 - y1
     if edge == "left":
