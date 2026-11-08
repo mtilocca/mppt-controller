@@ -25,7 +25,7 @@ NETFILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "mppt_control
 W, H = float(os.environ.get("BOARD_W", 175)), float(os.environ.get("BOARD_H", 120))
 RES = 0.25
 GRID = (int(W / RES) + 1, int(H / RES) + 1)
-CLR = 0.35                     # extra clearance around courtyards (mm)
+CLR = 0.6                     # extra clearance around courtyards (mm)
 EDGE = 1.2                     # keep-out from the board edge for non-edge parts
 
 b = pcbnew.LoadBoard(PATH)
@@ -41,13 +41,13 @@ for c in child(tree, "components")[1:]:
 
 # block regions (x1, y1, x2, y2)
 REGION = {
-    "pv_input": (1.5, 1.5, 45, 55), "battery": (1.5, 55, 45, 118.5),
+    "pv_input": (1.5, 1.5, 45, 58), "battery": (1.5, 58, 45, H - 1.5),
     "mppt_stage": (45, 1.5, 105, 66), "mppt_loop": (45, 1.5, 105, 66),
-    "load_switch": (45, 66, 75, 118.5), "inverter_feed": (75, 66, 105, 118.5),
-    "aux_power": (105, 1.5, 140, 28), "mcu": (105, 28, 150, 70), "flash": (105, 28, 150, 70),
-    "ethernet": (130, 58, 173.5, 100), "can": (105, 100, 138, 118.5), "rs485": (138, 100, 173.5, 118.5),
-    "usb_uart": (140, 12, 173.5, 58), "display": (105, 1.5, 173.5, 28), "leds": (105, 28, 150, 70),
-    "sensing": (1.5, 1.5, 173.5, 118.5), "top": (1.5, 1.5, 173.5, 118.5),
+    "load_switch": (45, 66, 75, H - 1.5), "inverter_feed": (75, 66, 105, H - 1.5),
+    "aux_power": (105, 1.5, 160, 28), "mcu": (100, 28, 162, 82), "flash": (100, 28, 162, 82),
+    "ethernet": (138, 66, W - 1.5, 106), "can": (105, 106, 148, H - 1.5), "rs485": (148, 106, W - 1.5, H - 1.5),
+    "usb_uart": (150, 12, W - 1.5, 62), "display": (105, 1.5, W - 1.5, 28), "leds": (100, 28, 162, 82),
+    "sensing": (1.5, 1.5, W - 1.5, H - 1.5), "top": (1.5, 1.5, W - 1.5, H - 1.5),
 }
 
 # ---------------------------------------------------------------- geometry helpers
@@ -149,9 +149,9 @@ def place_at(ref, cx, cy, rot=0):
 EDGE_PARTS = {
     "J1": ("left", 24), "J2": ("left", 88),
     "J3": ("bottom", 58), "J4": ("bottom", 84), "J5": ("bottom", 100),
-    "J8": ("right", 80), "J11": ("right", 30),
-    "J9": ("bottom", 122), "J10": ("bottom", 152),
-    "J13": ("top", 152),
+    "J8": ("right", 86), "J11": ("right", 30),
+    "J9": ("bottom", 132), "J10": ("bottom", 172),
+    "J13": ("top", 172),
 }
 for ref, (edge, along) in EDGE_PARTS.items():
     if ref in fps:
@@ -165,7 +165,7 @@ ANCHORS = {   # ref: (cx, cy, rot)
     "U2": (62, 40, 0), "C16": (78, 46, 0), "C17": (92, 46, 0), "R7": (86, 58, 0),
     "C37": (24, 92, 0), "C38": (39, 92, 0),
     # digital
-    "U17": (128, 48, 0), "U14": (112, 12, 0), "L2": (126, 12, 0),
+    "U17": (130, 54, 0), "U14": (112, 12, 0), "L2": (126, 12, 0),
 }
 for ref, (cx, cy, rot) in ANCHORS.items():
     if ref in fps and ref not in EDGE_PARTS:
@@ -331,8 +331,8 @@ print('occupied fraction after anchors', round(float(occ.mean()),3), flush=True)
 
 # ---------------------------------------------------------------- isolation barriers (CAN, RS485)
 ISO_GROUPS = {   # IC: (connector, bus nets, IC bus-side pins, IC x)
-    "U20": ("J9", {"CAN_GND", "CAN_VISO", "CANH", "CANL", "CAN_TERM_MID"}, {str(i) for i in range(9, 17)}, 124),
-    "U21": ("J10", {"ISO_GND", "ISO_3V3", "RS485_A", "RS485_B", "RS485_TERM_MID"}, {str(i) for i in range(9, 17)}, 154),
+    "U20": ("J9", {"CAN_GND", "CAN_VISO", "CANH", "CANL", "CAN_TERM_MID"}, {str(i) for i in range(9, 17)}, 132),
+    "U21": ("J10", {"ISO_GND", "ISO_3V3", "RS485_A", "RS485_B", "RS485_TERM_MID"}, {str(i) for i in range(9, 17)}, 172),
 }
 BARRIERS = []
 
@@ -354,7 +354,7 @@ for ic, (conn, nets_, pins, ix) in ISO_GROUPS.items():
         continue
     fp = fps[ic]
     orient_bus_down(fp, pins)
-    move_center(fp, ix, 97)
+    move_center(fp, ix, H - 24)
     mark(fp)
     placed.add(ic)
     refresh_pad_xy(ic)

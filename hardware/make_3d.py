@@ -9,7 +9,6 @@ STOCK = "${KICAD10_3DMODEL_DIR}/"
 SPEC = {
  "L1": ("cyl", (24.6, 15.5, 15.5), (0.15, 0.15, 0.17)),       # vertical toroid: use footprint extents
  "F2": ("box", None, (0.9, 0.2, 0.2), 19.0),
- "J8": ("box", None, (0.75, 0.75, 0.78), 13.1),               # HR911105A
  "J11": ("box", None, (0.7, 0.7, 0.72), 3.3),                 # USB-C receptacle
  "L2": ("box", (12.5, 12.5, 4.8), (0.1, 0.1, 0.12), 4.8),     # SRP1245A
 }
@@ -33,6 +32,28 @@ Transform {{ translation {cx} {cy_} {h/2} children Shape {{
  appearance Appearance {{ material Material {{ diffuseColor {col[0]} {col[1]} {col[2]} }} }}
  geometry Box {{ size {sx} {sy} {h} }} }} }}
 """)
+def add_opening(fp, path, x0, x1, y0, y1, h, ref):
+    """dark port recess on the face that points to the nearest board edge"""
+    bb = b.GetBoardEdgesBoundingBox(); pos = fp.GetPosition()
+    cand = {(1, 0): tomm(bb.GetRight() - pos.x), (-1, 0): tomm(pos.x - bb.GetLeft()),
+            (0, 1): tomm(bb.GetBottom() - pos.y), (0, -1): tomm(pos.y - bb.GetTop())}
+    gx, gy = min(cand, key=cand.get)
+    a = math.radians(fp.GetOrientationDegrees()); c, s = math.cos(a), math.sin(a)
+    lx, ly = gx * c - gy * s, gx * s + gy * c
+    lx, ly = round(lx), round(ly)
+    ow, oh, ot = (11.5, 7.0, 1.6) if ref == "J8" else (8.9, 2.6, 1.0)
+    oz = 2.0 if ref == "J8" else 0.7 * h
+    cxm, cym = (x0 + x1) / 2, (y0 + y1) / 2
+    if lx:  sx, sy, px, py = ot, ow, (x1 if lx > 0 else x0), cym
+    else:   sx, sy, px, py = ow, ot, cxm, (y1 if ly > 0 else y0)
+    if ref == "J11": oz = h / 2
+    txt = open(path).read()
+    txt += f"""Transform {{ translation {px} {-py} {oz + oh/2 if ref == "J8" else oz} children Shape {{
+ appearance Appearance {{ material Material {{ diffuseColor 0.05 0.05 0.05 }} }}
+ geometry Box {{ size {sx} {sy} {oh} }} }} }}
+"""
+    open(path, "w").write(txt)
+    print(ref, "port faces local", (lx, ly), "global", (gx, gy))
 def cyl_wrl(path, cx, cy_, r, h, col):
     open(path, "w").write(f"""#VRML V2.0 utf8
 Transform {{ translation {cx} {-cy_} {h/2} rotation 1 0 0 1.5708 children Shape {{
@@ -49,6 +70,12 @@ for fp in b.GetFootprints():
         m = pcbnew.FP_3DMODEL(); m.m_Filename = STOCK + "Package_SO.3dshapes/TSSOP-38_4.4x9.7mm_P0.5mm.step"
         m.m_Scale.x = m.m_Scale.y = m.m_Scale.z = 1.0; fp.Add3DModel(m)
         continue
+    if ref == "J8":                      # real LCSC C12074 (HR911105A) STEP from EasyEDA, aligned by hand
+        while len(fp.Models()): fp.Models().pop()
+        m = pcbnew.FP_3DMODEL(); m.m_Filename = "${KIPRJMOD}/../3d/J8_HR911105A.step"
+        m.m_Offset.x, m.m_Offset.y, m.m_Offset.z = 4.44, 2.4, 0
+        m.m_Scale.x = m.m_Scale.y = m.m_Scale.z = 1.0; fp.Add3DModel(m)
+        continue
     if ref not in SPEC: continue
     kind, dims, col = SPEC[ref][:3]
     x0, x1, y0, y1 = local_bbox(fp)
@@ -62,6 +89,8 @@ for fp in b.GetFootprints():
         else:
             ex = 1.0 if ref != "J8" else 3.0; x0 -= ex; x1 += ex; y0 -= ex; y1 += ex
         box_wrl(p, x0, x1, y0, y1, h, col)
+        if ref in ("J8", "J11"):
+            add_opening(fp, p, x0, x1, y0, y1, h, ref)
     while len(fp.Models()): fp.Models().pop()
     m = pcbnew.FP_3DMODEL(); m.m_Filename = "${KIPRJMOD}/../3d/%s.wrl" % ref
     m.m_Scale.x = m.m_Scale.y = m.m_Scale.z = 1 / 2.54; fp.Add3DModel(m)   # KiCad VRML unit = 0.1 inch

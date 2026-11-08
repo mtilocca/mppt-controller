@@ -2,7 +2,7 @@
 	(version "E")
 	(design
 		(source "/home/baloo/mppt-controller/hardware/mppt_controller.kicad_sch")
-		(date "2026-11-07T15:34:20")
+		(date "2026-11-08T22:38:30")
 		(tool "Eeschema 10.0.7")
 		(sheet
 			(number "1")
@@ -24874,7 +24874,7 @@
 		(net
 			(code "13")
 			(name "/aux_power/VAUX_RAW")
-			(class "Default")
+			(class "Rail")
 			(node
 				(ref "C69")
 				(pin "1")
@@ -24916,7 +24916,7 @@
 		(net
 			(code "14")
 			(name "/battery/BAT_NEG")
-			(class "Default")
+			(class "Power")
 			(node
 				(ref "J2")
 				(pin "2")
@@ -24939,7 +24939,7 @@
 		(net
 			(code "15")
 			(name "/battery/BAT_RAW")
-			(class "Default")
+			(class "Power")
 			(node
 				(ref "F2")
 				(pin "1")
@@ -25101,7 +25101,7 @@
 		(net
 			(code "21")
 			(name "/can/CAN_VISO")
-			(class "Default")
+			(class "Rail")
 			(node
 				(ref "C124")
 				(pin "1")
@@ -25308,7 +25308,7 @@
 		(net
 			(code "31")
 			(name "/ethernet/ETH_CT")
-			(class "Default")
+			(class "Rail")
 			(node
 				(ref "C117")
 				(pin "1")
@@ -25497,7 +25497,7 @@
 		(net
 			(code "41")
 			(name "/ethernet/PHY_VDDCR")
-			(class "Default")
+			(class "Rail")
 			(node
 				(ref "C110")
 				(pin "1")
@@ -26144,7 +26144,7 @@
 		(net
 			(code "75")
 			(name "/mcu/VCAP")
-			(class "Default")
+			(class "Rail")
 			(node
 				(ref "C87")
 				(pin "1")
@@ -26529,7 +26529,7 @@
 		(net
 			(code "95")
 			(name "/mppt_stage/LM5177_VCC")
-			(class "Default")
+			(class "Rail")
 			(node
 				(ref "C27")
 				(pin "1")
@@ -26695,7 +26695,7 @@
 		(net
 			(code "104")
 			(name "/mppt_stage/SW1")
-			(class "Default")
+			(class "Power")
 			(node
 				(ref "C14")
 				(pin "2")
@@ -26747,7 +26747,7 @@
 		(net
 			(code "105")
 			(name "/mppt_stage/SW2")
-			(class "Default")
+			(class "Power")
 			(node
 				(ref "C15")
 				(pin "2")
@@ -26799,7 +26799,7 @@
 		(net
 			(code "106")
 			(name "/mppt_stage/VIN_CS")
-			(class "Default")
+			(class "Power")
 			(node
 				(ref "C10")
 				(pin "1")
@@ -26867,7 +26867,7 @@
 		(net
 			(code "108")
 			(name "/pv_input/PVD_VCAP")
-			(class "Default")
+			(class "Rail")
 			(node
 				(ref "C1")
 				(pin "1")
@@ -26883,7 +26883,7 @@
 		(net
 			(code "109")
 			(name "/pv_input/PV_F")
-			(class "Default")
+			(class "Power")
 			(node
 				(ref "C1")
 				(pin "2")
@@ -26950,7 +26950,7 @@
 		(net
 			(code "110")
 			(name "/pv_input/PV_RAW")
-			(class "Default")
+			(class "Power")
 			(node
 				(ref "F1")
 				(pin "1")
@@ -26966,7 +26966,7 @@
 		(net
 			(code "111")
 			(name "/rs485/ISO_3V3")
-			(class "Default")
+			(class "Rail")
 			(node
 				(ref "C128")
 				(pin "1")
@@ -27442,7 +27442,7 @@
 		(net
 			(code "133")
 			(name "/usb_uart/VBUS")
-			(class "Default")
+			(class "Rail")
 			(node
 				(ref "C131")
 				(pin "1")
@@ -27492,7 +27492,7 @@
 		(net
 			(code "134")
 			(name "/usb_uart/VBUS_PROT")
-			(class "Default")
+			(class "Rail")
 			(node
 				(ref "D13")
 				(pin "2")
@@ -27514,7 +27514,7 @@
 		(net
 			(code "135")
 			(name "3V3")
-			(class "Default")
+			(class "Rail")
 			(node
 				(ref "C100")
 				(pin "1")
@@ -27992,7 +27992,7 @@
 		(net
 			(code "136")
 			(name "3V3A")
-			(class "Default")
+			(class "Rail")
 			(node
 				(ref "C102")
 				(pin "1")
@@ -28049,7 +28049,7 @@
 		(net
 			(code "137")
 			(name "5V")
-			(class "Default")
+			(class "Rail")
 			(node
 				(ref "C121")
 				(pin "1")
@@ -28283,7 +28283,7 @@
 		(net
 			(code "144")
 			(name "BAT_BUS")
-			(class "Default")
+			(class "Power")
 			(node
 				(ref "C37")
 				(pin "1")
@@ -28414,7 +28414,7 @@
 		(net
 			(code "145")
 			(name "BAT_F")
-			(class "Default")
+			(class "Power")
 			(node
 				(ref "D3")
 				(pin "1")
@@ -30343,7 +30343,7 @@
 		(net
 			(code "169")
 			(name "INV_OUT")
-			(class "Default")
+			(class "Power")
 			(node
 				(ref "C45")
 				(pin "1")
@@ -30450,7 +30450,7 @@
 		(net
 			(code "172")
 			(name "INV_SENSE")
-			(class "Default")
+			(class "Power")
 			(node
 				(ref "Q11")
 				(pin "5")
@@ -30980,7 +30980,7 @@
 		(net
 			(code "201")
 			(name "LOAD_OUT")
-			(class "Default")
+			(class "Power")
 			(node
 				(ref "C42")
 				(pin "1")
@@ -31076,7 +31076,7 @@
 		(net
 			(code "203")
 			(name "LOAD_SENSE")
-			(class "Default")
+			(class "Power")
 			(node
 				(ref "Q9")
 				(pin "5")
@@ -31147,7 +31147,7 @@
 		(net
 			(code "206")
 			(name "PV_D")
-			(class "Default")
+			(class "Power")
 			(node
 				(ref "Q1")
 				(pin "5")
@@ -31547,7 +31547,7 @@
 		(net
 			(code "227")
 			(name "USB_VBUS")
-			(class "Default")
+			(class "Rail")
 			(node
 				(ref "R94")
 				(pin "2")
@@ -31568,7 +31568,7 @@
 		(net
 			(code "228")
 			(name "VAUX")
-			(class "Default")
+			(class "Rail")
 			(node
 				(ref "C26")
 				(pin "1")
@@ -31658,7 +31658,7 @@
 		(net
 			(code "229")
 			(name "VIN_PWR")
-			(class "Default")
+			(class "Power")
 			(node
 				(ref "C25")
 				(pin "1")
@@ -31735,7 +31735,7 @@
 		(net
 			(code "230")
 			(name "VOUT")
-			(class "Default")
+			(class "Power")
 			(node
 				(ref "C16")
 				(pin "1")
