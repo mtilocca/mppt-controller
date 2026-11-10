@@ -18,7 +18,10 @@ KiCad scripts run with `flatpak run --command=python3 org.kicad.KiCad <script>` 
 Last committed DRC state (before today's terminal-block flip): 3 clearance, 4 starved thermal, 141 unconnected
 (80 GND SMD pads without room for a via, about 60 single signal/power links).
 
-## 2. Uncommitted work in progress (read first)
+## 2. Update 2026-11-10 (supersedes the numbers above)
+Terminal flip is done and its nets re-routed; `post_route.py` was fixed (it crashed/accumulated stale GND vias because SWIG proxies go stale after `Remove()`; it now saves and reloads). `fix_gnd.py` adds via+stub for GND pads (slow, ~8 min). **DRC: 0 violations, 133 unconnected** (72 GND pads with no room for a via, 61 signal/power links: I2C_SCL x7, BAT_BUS x3, 3V3 x2, INV_UVLO x2, INA_ALERT x2, ETH_NRST x2, LCD_*, etc.). `route_power.py` could not close BAT_BUS 4, INV_OUT 2, LOAD_OUT 2, VIN_PWR 2: fine-pitch INA228/LM5069 pins. Next: hand-route those in KiCad.
+
+## 2b. Older notes (before 2026-11-10)
 
 1. **Terminal blocks J1-J4 (MKDS 5.08) were mounted backwards** (wire entry facing the board interior). Fix applied:
    - `place_pcb.py`: `place_edge` adds 180 deg for MKDS footprints (so a rebuild is right too).

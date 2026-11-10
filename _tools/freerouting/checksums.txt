@@ -1,0 +1,5 @@
+9acbfd88c62d40012e7b591c934b340e449486dbe8aae3387943a84119f77171  freerouting-cli-2.5.0-linux-arm64.tar.gz
+64a957a9ef2a2fbde6ab2001bb32800f5ba34f9fd15575e363512934b870d63a  freerouting-cli-2.5.0-linux-x64.tar.gz
+515eded3c615c13eaa336d5044f5df042bdb8d67181aac30fd0f7a457f1f93a7  freerouting-cli-2.5.0-macos-arm64.tar.gz
+7a0d039902469d21766f953da01c463479e374e190797ce4a8b0bbaf2fe1a990  freerouting-cli-2.5.0-macos-x64.tar.gz
+5750dc0bed261eefae29d79784301b478af978fd472407d77e01e85dbb794857 *freerouting-cli-2.5.0-windows-x64.zip

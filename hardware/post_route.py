@@ -30,13 +30,15 @@ if SES and not NO_IMPORT:
 bb = b.GetBoardEdgesBoundingBox()           # before removing zones (SWIG wrapper quirk)
 BW, BH = tomm(bb.GetRight()), tomm(bb.GetBottom())
 # ------------------------------------------------------------ remove what an earlier run added
+_old_gnd_vias = [t for t in b.GetTracks() if t.Type() == pcbnew.PCB_VIA_T and t.IsLocked() and t.GetNetname() == "GND"]
 for z in list(b.Zones()):
     nm = z.GetZoneName()
     if nm.startswith("HC_") or nm.startswith("GND_") or (not z.GetIsRuleArea() and z.GetLayer() in (pcbnew.F_Cu, pcbnew.B_Cu)):
         b.Remove(z)
-for t in list(b.GetTracks()):
-    if t.Type() == pcbnew.PCB_VIA_T and t.IsLocked() and t.GetNetname() == "GND":
-        b.Remove(t)
+for t in _old_gnd_vias:
+    b.Remove(t)
+pcbnew.SaveBoard(PCB, b)                    # reload: SWIG proxies are stale after Remove()
+b = pcbnew.LoadBoard(PCB)
 
 gnd = b.FindNet("GND")
 
