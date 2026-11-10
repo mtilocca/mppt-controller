@@ -75,9 +75,9 @@ Built by `hardware/mppt_controller.py` (SKiDL) + `net2sch.py`; STM32 pins by `ha
 5. **Current budget.** Load and inverter switches are 15 A each; the 2 low-side reverse-polarity FETs carry the sum of charge, load and inverter current, so check the thermal budget (an inverter on a 12 V battery is limited to about 180 W per 15 A).
 6. **Hot-swap tuning:** RPWR 150 k and CTIMER 470 nF are starting values; the FET SOA at inverter inrush must be checked.
 7. **Display pinout:** the 40-pin FPC order is a starting assignment, panels differ; match it to the chosen panel (and its LED driver) before layout.
-8. **Board power:** the board is powered from the battery only. USB-C does not power it, so bench programming needs a battery or a bench supply on the battery terminals (a USB power-OR to 3V3 could be added).
+8. **Board power:** the board is powered from the battery bus, or from USB VBUS (PTC + Schottky into VAUX) when no battery is present; a second diode blocks back-feed into the 9 V buck.
 9. RJ45 jack LEDs are not wired (their polarity needs the jack datasheet), CA-IS3062VW pin table comes from the Chinese datasheet v1.04 (re-check against the English one), MCP4728 power-up output values must be confirmed (MPPT_NEN keeps the converter off until firmware sets the DAC).
-10. Not yet done: PCB placement/routing, BOM with LCSC numbers, JLC rotations, fab files, EMC/thermal review.
+10. Status 2026-11-10: PCB 195 x 128 mm placed and about 95 % routed (see 04-handover.md). Not yet done: finish routing, DRC clean-up, BOM with LCSC numbers, JLC rotations, fab files, EMC/thermal review.
 
 ## 2.8 Next steps
 
