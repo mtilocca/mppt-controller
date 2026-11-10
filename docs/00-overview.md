@@ -44,6 +44,10 @@ Bottom copper:
 
 ![bottom](img/board-bot.png)
 
+### PCB editor and 3D viewer (screenshots, 2026-11-10)
+![PCB editor](img/pcb-editor.png)
+![3D viewer](img/pcb-3d-viewer.png)
+
 ### 3D model
 Top view and an angled view. L1 (toroid), L2, the fuse holder and the USB-C jack are placeholder boxes; the RJ45 is the
 vendor model (HR911105A).

@@ -5,6 +5,11 @@ Design only (not built, not validated). KiCad 10 project generated from code.
 
 ![3D](docs/img/board-3d-iso.png)
 
+PCB editor (routed copper, 195 x 128 mm, 4 layers) and the 3D viewer:
+
+![PCB editor](docs/img/pcb-editor.png)
+![3D viewer](docs/img/pcb-3d-viewer.png)
+
 | Doc | Content |
 |---|---|
 | [docs/00-overview.md](docs/00-overview.md) | What it is, pictures (schematic, PCB, 3D), use cases, comparison with a standard MPPT controller |
